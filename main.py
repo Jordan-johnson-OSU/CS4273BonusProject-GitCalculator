@@ -1,4 +1,6 @@
 import PySimpleGUI as gui
+import re
+from NumericStringParser import NumericStringParser
 
 # Layout
 # User can see an entry pad containing buttons for the digits 0-9, operations - '+', '-', '/', and '=', a 'C' button (for clear), and an 'AC' button (for clear all).
@@ -17,6 +19,12 @@ form.Layout(layout)
 
 #Stack to keep track of Order of Operations
 Equal = ''
+
+# Instantiate NumericStringParser object
+nsp = NumericStringParser()
+
+# Regex used to parse equation string
+p_equation = re.compile(r"((-?(?:\d+(?:\.\d+)?))|([-+\/*()])|(-?\.\d+))")
 
 # Loop until the program is closed
 while True:
@@ -53,9 +61,9 @@ while True:
     elif button is '/':
         Equal += '/'
 
-    # TODO: do the actual calculation based on the Equal Stack.  Can't use Eval
+    # do the actual calculation based on the Equal Stack.  Can't use Eval
     elif button is '=':
-       Equal = Equal
+        Equal = nsp.calculate(Equal)
 
     elif button is 'Quit' or button is None:  # QUIT Program
         print('quit')
