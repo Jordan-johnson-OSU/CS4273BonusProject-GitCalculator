@@ -15,6 +15,7 @@ All I've done is rewrap Paul McGuire's fourFn.py as a class, so I can use it
 more easily in other places.
 '''
 
+
 class NumericStringParser(object):
     '''
     Most of this code comes from the fourFn.py pyparsing example
@@ -65,11 +66,11 @@ class NumericStringParser(object):
         # that is, 2^3^2 = 2^(3^2), not (2^3)^2.
         factor = Forward()
         factor << atom + \
-            ZeroOrMore((expop + factor).setParseAction(self.pushFirst))
+        ZeroOrMore((expop + factor).setParseAction(self.pushFirst))
         term = factor + \
-            ZeroOrMore((multop + factor).setParseAction(self.pushFirst))
+               ZeroOrMore((multop + factor).setParseAction(self.pushFirst))
         expr << term + \
-            ZeroOrMore((addop + term).setParseAction(self.pushFirst))
+        ZeroOrMore((addop + term).setParseAction(self.pushFirst))
         # addop_term = ( addop + term ).setParseAction( self.pushFirst )
         # general_term = term + ZeroOrMore( addop_term ) | OneOrMore( addop_term)
         # expr <<  general_term
@@ -87,8 +88,9 @@ class NumericStringParser(object):
                    "exp": math.exp,
                    "abs": abs,
                    "trunc": lambda a: int(a),
-                   "round": round,
-                   "sgn": lambda a: abs(a) > epsilon and cmp(a, 0) or 0}
+                   "round": round
+                   # ,"sgn": lambda a: abs(a) > epsilon and cmp(a, 0) or 0
+                   }
 
     def evaluateStack(self, s):
         op = s.pop()
