@@ -8,7 +8,7 @@ from NumericStringParser import NumericStringParser
 layout = [[gui.Txt('' * 14)],
           [gui.Text('', size=(15, 1), font=('Arial', 24), text_color='Black', key='input')],
           [gui.Txt('' * 14)],
-          [gui.ReadFormButton('+/-'), gui.ReadFormButton(''), gui.ReadFormButton(''), gui.ReadFormButton('')],
+          [gui.ReadFormButton('+/-')],
           [gui.ReadFormButton('sqr'), gui.ReadFormButton('log'), gui.ReadFormButton('C'), gui.ReadFormButton('AC')],
           [gui.ReadFormButton('7'), gui.ReadFormButton('8'), gui.ReadFormButton('9'), gui.ReadFormButton('/')],
           [gui.ReadFormButton('4'), gui.ReadFormButton('5'), gui.ReadFormButton('6'), gui.ReadFormButton('*')],
