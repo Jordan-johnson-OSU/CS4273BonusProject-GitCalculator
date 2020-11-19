@@ -8,6 +8,7 @@ from NumericStringParser import NumericStringParser
 layout = [[gui.Txt('' * 14)],
           [gui.Text('', size=(15, 1), font=('Arial', 24), text_color='Black', key='input')],
           [gui.Txt('' * 14)],
+          [gui.ReadFormButton('+/-'), gui.ReadFormButton(''), gui.ReadFormButton(''), gui.ReadFormButton('')],
           [gui.ReadFormButton('sqr'), gui.ReadFormButton('log'), gui.ReadFormButton('C'), gui.ReadFormButton('AC')],
           [gui.ReadFormButton('7'), gui.ReadFormButton('8'), gui.ReadFormButton('9'), gui.ReadFormButton('/')],
           [gui.ReadFormButton('4'), gui.ReadFormButton('5'), gui.ReadFormButton('6'), gui.ReadFormButton('*')],
@@ -36,7 +37,7 @@ while True:
     #   the last two numbers entered OR
     #   the last number entered
 
-    # TODO: Bonus
+    # Bonus
     # User can click a '+/-' button to change the sign of the number that is currently displayed.
     # User can see a decimal point ('.') button on the entry pad to that allows floating point numbers up to 3 places
     # to be entered and operations to be carried out to the maximum number of decimal places entered for any one number.
@@ -50,10 +51,10 @@ while True:
     # operation the display will be updated to the value that preceded it.
     elif button == 'C':
         storedInput = str(storedInput[:-1])
-    elif str(button) in '1234567890.':
+    elif str(button) in '1234567890+-.':
         storedInput += str(button)
-    elif str(button) in '+-':
-        storedInput += str(button)
+    elif str(button) == '+/-':
+        storedInput = str(int(storedInput)*-1)
     elif button == '*':
         storedInput += '*'
     elif button == '/':

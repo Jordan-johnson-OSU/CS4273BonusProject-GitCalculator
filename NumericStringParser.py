@@ -109,7 +109,7 @@ class NumericStringParser(object):
         elif op[0].isalpha():
             return 0
         else:
-            return float(op)
+            return int(op)
 
     def calculate(self, num_string, parseAll=True):
         self.exprStack = []
